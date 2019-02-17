@@ -118,6 +118,8 @@ class TransferenciaController extends Controller
                         }
                     }
 
+                } else {
+                    \Session::flash('warnning','Agregar un monto a transferir valido!');  
                 }
             } else {
                 \Session::flash('warnning','El numero de cuenta del destinatario no existe o a sido cambiado');  

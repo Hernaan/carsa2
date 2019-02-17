@@ -103,6 +103,11 @@
                                 onclick="window.location.href='{{url('/bono_gestion')}}'">
                                 <i class="icon-bag"></i>Bono Gestion</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" 
+                                onclick="window.location.href='{{url('/product_list')}}'">
+                                <i class="icon-bag"></i>Productos</a>
+                            </li>
                         </ul>
                     </li>
                 </ul>

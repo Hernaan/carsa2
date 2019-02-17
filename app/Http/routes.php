@@ -52,9 +52,10 @@ Route::get('/bono_productividad', 'CategoriaController@bono_productividad');
 Route::get('/bono_gestion', 'CategoriaController@bono_gestion');
 
 Route::get('punto_list', 'PuntosController@list')->name('punto.list');
+
 Route::post('punto-import', 'PuntosController@puntosImport')->name('punto.import');
 Route::get('punto-export/{type}', 'PuntosController@puntosExport')->name('punto.export');
-Route::get('product-list', 'ProductController@list')->name('product.list');
+Route::get('product_list', 'ProductController@list')->name('product.list');
 Route::post('product-import', 'ProductController@productsImport')->name('product.import');
 Route::get('product-export/{type}', 'ProductController@productsExport')->name('product.export');
 
