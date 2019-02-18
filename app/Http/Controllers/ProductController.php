@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests;
 use App\Product;
 use Excel;
+use Image;
+use Illuminate\Support\Facades\Input;
 
 class ProductController extends Controller
 {
@@ -45,5 +47,36 @@ class ProductController extends Controller
                 $sheet->fromArray($products);
             });
         })->download($type);
+    }
+
+    public function agregarFoto(Request $request, $id) {
+        // var_dump($request->id); die;
+        $producto = Product::findOrFail($request->id);
+        if(Input::hasFile('image')) {
+            $file=Input::file('image');
+            Image::make($request->file('image'))
+                ->resize(244, 245)
+                ->save(public_path().'/imagenes/productos/' . $file->getClientOriginalName());
+            $producto->image=$file->getClientOriginalName();
+        }
+        if($producto->save()){
+            return redirect("/product_list")->with('success', 'Imagen agregada correctamente!');
+        }else{
+            return redirect("/product_list")->with('warnning', 'No se puedo agregar el archivo!');
+        }
+
+    }
+
+    public function activar_desactivar(Request $request, $id) {
+        $producto = Product::find($request->id);
+
+        if($producto->condicion==1){
+            $producto->condicion=0;
+        }else{
+            $producto->condicion=1;
+        }
+        $producto->save();
+        return redirect("/product_list");
+
     }
 }

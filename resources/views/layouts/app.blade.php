@@ -18,15 +18,17 @@
     <style>
         body {
             font-family: 'Lato';
+            background-color: #EFFC27;
         }
 
         .fa-btn {
             margin-right: 6px;
         }
+
     </style>
 </head>
 <body id="app-layout">
-    <nav class="navbar navbar-default navbar-static-top">
+    {{-- <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
             <div class="navbar-header">
 
@@ -70,7 +72,9 @@
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav> --}}
+
+    <div style="margin-top: 30px;"></div>
 
     @yield('content')
 

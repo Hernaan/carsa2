@@ -141,6 +141,17 @@ class ClienteController extends Controller
             from regalos as r
             join users as u
             where r.user_regalo ='$user_id' AND r.user_recibio = u.id AND MONTH(r.created_at) = '$mes'");
-    	return view('cliente.historial_mes', compact('puntos_acumulados', 'puntualidad', 'llegadas_tardias', 'productividad', 'bono_mensual_ausencia', 'bono_mensual_apercibimiento', 'nombre_mes', 'tranferencia_recibidas', 'tranferencia_realizadas'));
+
+        $compras_realizadas =  DB::select("
+            SELECT c.*, p.name as product_name, u.name as user
+            from canjeos as c
+            join users as u
+            join products as p
+            where c.user_canjeo ='$user_id' AND c.user_canjeo = u.id
+            AND p.id = c.id_producto
+
+            AND MONTH(c.created_at) = '$mes' ");
+
+    	return view('cliente.historial_mes', compact('puntos_acumulados', 'puntualidad', 'llegadas_tardias', 'productividad', 'bono_mensual_ausencia', 'bono_mensual_apercibimiento', 'nombre_mes', 'tranferencia_recibidas', 'tranferencia_realizadas', 'compras_realizadas'));
     }
 }

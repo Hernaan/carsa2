@@ -38,6 +38,9 @@
           </div>
         </div>
       </div>
+      <div class="col-lg-12 mb-12">
+  
+      </div>
       <div class="col-lg-3 mb-3">
         <div class="">
           <div class="">
@@ -48,7 +51,21 @@
       <div class="col-lg-3 mb-3">
         <div class="">
           <div class="">
-            <a href="{{url('/extracto')}}" class="btn btn-primary">VER CATÁLOGO</a>
+            <a href="{{url('/catalogo')}}" class="btn btn-primary">VER CATÁLOGO</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 mb-3">
+        <div class="">
+          <div class="">
+            <a href="{{url('/acumula_mas')}}" class="btn btn-primary">¡ACUMULA MÁS!</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 mb-3">
+        <div class="">
+          <div class="">
+            <a href="{{url('/bases')}}" class="btn btn-primary">BASES</a>
           </div>
         </div>
       </div>

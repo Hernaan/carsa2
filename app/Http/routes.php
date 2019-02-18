@@ -22,6 +22,14 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/historial_mes/{id}', 'ClienteController@historial_mes');
 	Route::get('/transferencia/', 'TransferenciaController@index');
 	Route::post('/transferencia/enviar', 'TransferenciaController@transferir');
+	Route::get('/catalogo/', 'CatalogoController@index');
+	Route::post('/canjear_producto', 'CatalogoController@canjear_producto');
+	Route::get('/bases', function () {
+	    return view('informativo.bases');
+	});
+	Route::get('/acumula_mas', function () {
+	    return view('informativo.acumula_mas');
+	});
 });
 
 
@@ -58,7 +66,8 @@ Route::get('punto-export/{type}', 'PuntosController@puntosExport')->name('punto.
 Route::get('product_list', 'ProductController@list')->name('product.list');
 Route::post('product-import', 'ProductController@productsImport')->name('product.import');
 Route::get('product-export/{type}', 'ProductController@productsExport')->name('product.export');
-
+Route::post('/agregarFoto/{id}', 'ProductController@agregarFoto');
+Route::get('/activar_desactivar/{id}', 'ProductController@activar_desactivar');
 
 Route::auth();
 

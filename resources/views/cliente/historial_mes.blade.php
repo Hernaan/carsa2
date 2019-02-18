@@ -73,5 +73,20 @@
     <!-- cumple la funcion de un <br> o <hr> -->
       </div>
       <hr>
+      <div class="col-lg-12 mb-12">
+        <div class="card h-100">
+          <h6 class="card-header text-white">COMPRAS REALIZADAS</h6>
+          <div class="card-body">
+            @foreach($compras_realizadas as $compro)
+              <p class="card-text"> <b class="text-success">Compra realizada: </b>{{date('d-m-Y', strtotime($compro->created_at))}} por {{$compro->user}} el monto de {{$compro->monto_canjeo}} carsanies el producto {{$compro->product_name}}</p>
+              
+            @endforeach
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12 mb-12">
+    <!-- cumple la funcion de un <br> o <hr> -->
+      </div>
+      <hr>
     </div>
 @endsection

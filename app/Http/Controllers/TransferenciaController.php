@@ -40,8 +40,6 @@ class TransferenciaController extends Controller
 
         $acumulado = 0;
 
-        $col = 1;
-
         if ($monto_a_transferir <= $puntos_acumulados) {
 
             if ($user_a_transferir) {
@@ -54,12 +52,12 @@ class TransferenciaController extends Controller
                             
                             if ($acumulado ==  $monto_a_transferir) {
                                 // var_dump('acumulado ya es igual al monto a transferir '.$acumulado);
-                                // actualiza el registro
+                                // actualiza el registro del que regala
                                 $punto = Punto::findOrFail($registros[$i]->id);
                                 $punto->total_puntos_positivos = 0;
                                 $punto->save();
 
-                                // registra la transeferencia
+                                // registra la transeferencia para el beneficiado
                                 $monto_transferencia = $registro_a_sumar[0]->total_puntos_positivos + $acumulado;
                                 $punto_a_registrar = Punto::findOrFail($registro_a_sumar[0]->id);
                                 $punto_a_registrar->total_puntos_positivos = $monto_transferencia;
@@ -80,7 +78,7 @@ class TransferenciaController extends Controller
                             }
 
                             if ($acumulado <  $monto_a_transferir) {
-                                // actualiza el registro
+                                // actualiza el registro e iguala a 0
                                 $acumulado = $acumulado + $registros[$i]->total_puntos_positivos;
                                 $punto = Punto::findOrFail($registros[$i]->id);
                                 $punto->total_puntos_positivos = 0;

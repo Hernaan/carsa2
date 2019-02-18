@@ -1,5 +1,6 @@
 @extends('layouts.front')
 @section('content')
+
 <style>
   .btn {
     width: 100%;
